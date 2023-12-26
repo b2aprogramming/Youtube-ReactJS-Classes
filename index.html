@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .menus {
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            list-style: none;
+        }
+        .menus li {
+            margin: 0 15px;
+        }
+        .menus li a {
+            display: block;
+            padding: 10px;
+        }
+        #page-content {
+            padding: 15px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn">Load list Data</button>
+    </div>
+    <nav>
+        <ul class="menus">
+            <li>
+                <a href="/test-app">Home</a>
+            </li>
+            <li>
+                <a href="/test-app/about">About</a>
+            </li>
+            <li>
+                <a href="/test-app/contact">Contact</a>
+            </li>
+        </ul>
+        <!-- <ul class="menus">
+            <li>
+                <a href="/test-app">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul> -->
+    </nav>
+    <div id="page-content">
+
+    </div>
+    <div id="page-content2">
+
+    </div>
+
+    <script>
+        var links = document.querySelectorAll('.menus a');
+
+        links.forEach((ele) => {
+            ele.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                console.log('@@ URL', evt.target.href);
+                console.log('@@ URL', window.location);
+                window.history.pushState({}, "", evt.target.href);
+                let url = window.location.href.replace('#', '/');
+                loadPage(url);
+            });
+        });
+
+        function loadPage(url) {
+            let uri = url.includes('/test-app/') ? url : url +'/home';
+
+            // fetch(uri + '.html').then((res) => {
+                
+            //     const content = document.querySelector('#page-content');
+            //     res.text().then((htmlStr) => {
+            //         console.log(htmlStr);
+            //         content.innerHTML = htmlStr
+            //     });
+            // })
+            ajax2(uri + '.html', function(htmlStr) {
+                const content = document.querySelector('#page-content');
+                content.innerHTML = htmlStr;
+            })
+        }
+
+        // window.addEventListener('hashchange', function() {
+        //     console.log('@@@ HAS CHAGNE', window.location);
+        // });
+
+        window.addEventListener('popstate', function() {
+            console.log('hi state',window.location);
+            let url = window.location.href.replace('#', '/');
+            loadPage(url)
+        });
+
+        if(!window.location.href.includes('test-app')) {
+            window.history.replaceState({}, "", window.location.href + 'test-app');
+        }
+        
+        let url = window.location.href.replace('#', '/');
+        console.log('hi state',window.location);
+        console.log('hi URL',url);
+        loadPage(url);
+
+
+
+        function ajax() {
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function() {
+                
+                if(this.status === 200 && this.readyState === 4) {
+                   
+                    //let resp = JSON.parse(this.responseText);
+                    console.log('@@@ AJAX Dta',this.responseText);
+                    document.querySelector('#page-content2').innerHTML = this.responseText;
+                }
+            }
+            //
+            http.open('GET', 'http://localhost:52330/my-page.html', true);
+            http.send();
+        }
+        function ajax2(url, callBack) {
+            var http = new XMLHttpRequest();
+            http.onreadystatechange = function() {
+                
+                if(this.status === 200 && this.readyState === 4) {
+                    console.log('@@@ AJAX Dta',this.responseText);
+                    callBack(this.responseText)
+                }
+            }
+            //
+            http.open('GET', url, true);
+            http.send();
+        }
+
+        // for(let i = 0; i < 5; i ++) {
+        //     console.log('i===',i);
+        // }
+
+        // console.log('Hi test ===');
+        // setTimeout(() => {
+        //     console.log('Hi timeout');
+        // }, 3000);
+        // console.log('Hi eND test ===');
+
+      
+
+      document.querySelector('#btn').addEventListener('click', function() {
+        ajax();
+      })
+       
+    </script>
+</body>
+</html>
