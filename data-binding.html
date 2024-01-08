@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="txt">
+    </div>
+    <div id="dataTxt">
+
+    </div>
+    <script>
+        var txt = document.querySelector('#txt');
+        txt.addEventListener('keyup', function() {
+            var ele = document.querySelector('#dataTxt');
+            ele.innerHTML = this.value;
+        });
+
+        function useState( val ) {
+            let value = val;
+
+            function setName( txtVal ) {
+                console.log('TXTTT');
+            }
+            return [value, setName]
+        }
+
+        //var st = useState('Bhagath');
+        // console.log(st[0]);
+        // st[1]();
+        var [nn, setNNN] = useState('Bhagath');
+         console.log(nn);
+         setNNN();
+
+         var obj = {
+            name:" OB",
+            getName: () => {
+                return 'ddd'
+            }
+         };
+
+         var {name, getName} = obj;
+
+    </script>
+</body>
+</html>
