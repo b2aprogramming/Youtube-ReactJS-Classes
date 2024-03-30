@@ -6,8 +6,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main-app {
+  padding: 30px;
+}
+.list-blcok .todo-list-input input, .list-blcok .todo-list-input button{
+  border: 1px solid #150679;
+  padding: 10px;
+  border-radius: 10px;
+} 
+.todo-list-input {
+  padding-bottom: 20px;
+}
+.list-blcok .todo-list-input input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  transition: all 0.2s ease-in-out;
+}
+.list-blcok .todo-list-input input:focus {
+  outline: 3px solid rgba(37, 1, 239, 0.5);
+}
+.list-blcok .todo-list-input button {
+  background-color: #150679;
+  color: #fff;
+  border-color: #150679;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.todo-list {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #ccc;
+}
+.todo-list li {
+  border-bottom: 1px solid #ccc;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-list li span:last-child {
+  display: inline-flex;
+  padding: 0 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.list-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content:  space-between;
+  width: 100%;
 }
