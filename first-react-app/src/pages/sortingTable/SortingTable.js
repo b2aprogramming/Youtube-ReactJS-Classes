@@ -3,7 +3,6 @@ import { Products } from "./jsonTableData";
 
 function SortingTable(){
     const [listData, setlistData] = useState(Products.products);
-    const [selectOptionValue, setselectOptionValue] = useState('');
     const [selectedSort, setSelectedSort] = useState(null);
     const [sortType, setSortType] = useState('');
    
@@ -12,47 +11,6 @@ function SortingTable(){
         {name: 'Brand', key: 'brand', id: 2},
         {name: 'Category', key: 'category', id: 3},
     ]);
-   
-
-    const sortAsc = useCallback((evt) => {
-        if(!selectOptionValue) {
-            return;
-        }
-        setlistData((prev) => {
-            const arr = [...prev];
-            return arr.sort((x, y) => {
-                let a = x[selectOptionValue].toLowerCase();
-                let b = y[selectOptionValue].toLowerCase();
-                if(a > b) {
-                    return 1
-                } else if(a < b) {
-                    return -1
-                }else {
-                    return 0
-                }
-            })  
-        })
-    }, [selectOptionValue]);
-
-    const sortDsc = useCallback((evt) => {
-        if(!selectOptionValue) {
-            return;
-        }
-        setlistData((prev) => {
-            const arr = [...prev];
-            return arr.sort((x, y) => {
-                let a = x[selectOptionValue].toLowerCase();
-                let b = y[selectOptionValue].toLowerCase();
-                if(a > b) {
-                    return -1
-                } else if(a < b) {
-                    return 1
-                }else {
-                    return 0
-                }
-            })  
-        })
-    }, [selectOptionValue]);
 
 
     const setActive = useCallback((key) => {
