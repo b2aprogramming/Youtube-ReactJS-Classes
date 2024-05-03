@@ -118,7 +118,7 @@ function SortingTable(){
 
     return (
         <div>
-            <h1>Sorting page {!selectedSort && 'bhagath'}</h1>
+            <h1>Sorting table page</h1>
             <div className="table-block">
                 <table className="table-list">
                     <thead>
