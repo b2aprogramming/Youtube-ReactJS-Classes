@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 import { Products } from "./jsonTableData";
 
+
+
 function SortingTable(){
     const [listData, setlistData] = useState(Products.products);
     const [selectedSort, setSelectedSort] = useState(null);
@@ -78,6 +80,9 @@ function SortingTable(){
         <div>
             <h1>Sorting table page</h1>
             <div className="table-block">
+                <div>
+                    <input type="text" placeholder="Search..."/>
+                </div>
                 <table className="table-list">
                     <thead>
                         <tr>
@@ -90,6 +95,9 @@ function SortingTable(){
                                             {buildSortIcons(ele)}
                                         </div>
                                         </div>
+                                        <div>
+                    <input type="text" placeholder="Search..."/>
+                </div>
                                     </th>
                                 )
                             })}

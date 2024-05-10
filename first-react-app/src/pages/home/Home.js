@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import TestBind from '../../TestBinding';
 import DataList from '../../DataList';
 import TodoLost from '../../components/TodoList';
 import TodoList2 from '../../components/TodoList2';
 import CardComponent from '../../components/CardComponent';
+import { PageData } from '../../shred/hooks/data.hook';
 
 function Home(){
-    
+    const page = useContext(PageData);
+
   // const state1 = useState('Hello Worl');
   const [name, chagneName] = useState('Hello World');
   const [cardTitle] = useState('Card 1 test');
@@ -37,12 +39,18 @@ function Home(){
     console.log('@@ card click');
   }
 
+  const sharedData = () => {
+    
+  }
+
     return (
         <div>
             <h1>Home page</h1>
             {/* <h1>Hi Data sag</h1> */}
       <div>
-        
+        <div>
+          <button onClick={sharedData}>Map Data</button>
+        </div>
         <button onClick={showHideCard}>Show/Hide Card</button>
         <div>
           <button onClick={increaseCount}>Increase count</button>

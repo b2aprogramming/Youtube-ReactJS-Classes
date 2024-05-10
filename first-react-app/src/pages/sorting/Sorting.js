@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { Products } from "./jsonData";
+import { PageData } from "../../shred/hooks/data.hook";
 
 function Sorting(){
     const [listData, setlistData] = useState(Products.products);
@@ -70,54 +71,59 @@ function Sorting(){
     
 
     return (
-        <div>
-            <h1>Sorting page {selectOptionValue}</h1>
-            <div className="flex-box">
-                <select value={selectOptionValue} onChange={changeInput}>
-                    {selctOptions.map((ele) => {
-                        return (
-                            <option key={ele.key} value={ele.key}>{ele.name}</option>
-                        )
-                    })}
-                </select>
-                <button onClick={sortAsc}>Sort Ascending</button>
-                <button onClick={sortDsc}>Sort Descending</button>
-            </div>
-            <div className="table-block">
-                <table className="table-list">
-                    <thead>
-                        <tr>
-                            {tableHeaders.map((ele) => {
-                                return (
-                                    <th key={ele.id} className={setActive(ele.key)}>
-                                        <div className="column-block">
-                                        <div>{ele.name} </div>
-                                        <div className="sort-icons">
-                                            <span>&#11165;</span>
-                                            <span>&#11167;</span>
-                                        </div>
-                                        </div>
-                                    </th>
-                                )
-                            })}
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {listData.map((ele) => {
-                            return (
-                                <tr key={ele.id}>
-                                    <td className={setActive('title')}>{ele.title}</td>
-                                    <td className={setActive('brand')}>{ele.brand}</td>
-                                    <td className={setActive('category')}>{ele.category}</td>
-                                </tr>
-                            )
-                        })}
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <PageData.Consumer>
+           {(data) => {
+              <div>
+                <h2>== {data.home}</h2>
+              <h1>Sorting page {selectOptionValue}</h1>
+              <div className="flex-box">
+                  <select value={selectOptionValue} onChange={changeInput}>
+                      {selctOptions.map((ele) => {
+                          return (
+                              <option key={ele.key} value={ele.key}>{ele.name}</option>
+                          )
+                      })}
+                  </select>
+                  <button onClick={sortAsc}>Sort Ascending</button>
+                  <button onClick={sortDsc}>Sort Descending</button>
+              </div>
+              <div className="table-block">
+                  <table className="table-list">
+                      <thead>
+                          <tr>
+                              {tableHeaders.map((ele) => {
+                                  return (
+                                      <th key={ele.id} className={setActive(ele.key)}>
+                                          <div className="column-block">
+                                          <div>{ele.name} </div>
+                                          <div className="sort-icons">
+                                              <span>&#11165;</span>
+                                              <span>&#11167;</span>
+                                          </div>
+                                          </div>
+                                      </th>
+                                  )
+                              })}
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {listData.map((ele) => {
+                              return (
+                                  <tr key={ele.id}>
+                                      <td className={setActive('title')}>{ele.title}</td>
+                                      <td className={setActive('brand')}>{ele.brand}</td>
+                                      <td className={setActive('category')}>{ele.category}</td>
+                                  </tr>
+                              )
+                          })}
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+           }}
+        </PageData.Consumer>
     );
 }
 
