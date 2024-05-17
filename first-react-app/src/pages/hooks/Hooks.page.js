@@ -2,6 +2,7 @@ import { useCallback, useContext, useState } from "react";
 import { PageData } from "../../shred/hooks/data.hook";
 import Card from "./card";
 import TransitionTest from "./TransitionTest";
+import Hooks2 from "./Hooks2";
 // PageData.Provider = {
 //     name: 'Bhagath Singh'
 // }
@@ -33,6 +34,9 @@ function HooksPage(){
                 <h1>Transition</h1>
                 <TransitionTest/>
             </div>
+        </div>
+        <div>
+            <Hooks2/>
         </div>
         </PageData.Provider>
     )

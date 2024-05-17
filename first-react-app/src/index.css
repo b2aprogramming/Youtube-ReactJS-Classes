@@ -51,6 +51,18 @@ body {
   border: 1px solid #ccc;
   cursor: pointer;
 }
+/* .todo-list {
+  color: red
+  li {
+    blackground-color: red;
+
+    span {
+      &:first-child {
+        flex: 1;
+      }
+    }
+  }
+} */
 .list-wrapper {
   display: flex;
   align-items: center;
