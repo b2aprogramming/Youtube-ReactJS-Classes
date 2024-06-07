@@ -1,0 +1,141 @@
+// @import '../public/assets/css/fonts.scss';
+@import './assets/css/fonts.scss';
+@import './assets/css/font-family.scss';
+@import './assets/css/variables.scss';
+
+body {
+  margin: 0;
+  font-family: 'poppinsregular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F3F4FF ;
+}
+*{
+  box-sizing: border-box;
+}
+html,body,#root,main {
+  height: 100%;
+}
+.main {
+  display: flex;
+}
+.app-sidebar {
+  flex: 1 0 345px;
+  background-color: $purple;
+  height: 100%;
+  padding: 40px 0 0 42px;
+  color: #fff;
+}
+.app-content {
+  flex: 1 1 100%;
+}
+.logo-block {
+  display: flex;
+  color: #fff;
+  
+  a {
+    display: flex;
+    align-items: center;
+  }
+  figure {
+    margin: 0px;
+  }
+  strong {
+    font-size: 36px;
+    margin: 0 0 0 15px;
+  }
+}
+
+.side-nav-menus {
+  padding-top: 40px;
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    li {
+      a {
+        text-decoration: none;
+        color: #C1BBEB;
+        font-size: 18px;
+        font-family: 'poppinsmedium';
+        display: flex;
+        align-items: center;
+        min-height: 64px;
+        gap: 30px;
+        border-radius: 40px 0 0 40px;
+        padding-left: 26px;
+        &.active {
+          background-color: #fff;
+          color: $purple
+        }
+      }
+      .menu-icon {
+        font-size: 40px;
+      }
+    }
+  }
+}
+.sidenav-footer {
+  padding-top: 100px;
+  p{
+    &:first-child {
+      font-size: 14px;
+      font-family: 'poppinsbold';
+    }
+    &:last-child{
+      font-size: 14px;
+      span {
+        color: red;
+        font-size: 16px
+      };
+    }
+  }
+}
+
+
+
+.search-box {
+  background-color: #fff;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  padding: 0 30px;
+  .search-box-icon {
+    font-size: 32px;
+    color: #4D44B5;
+    margin-right: 10px;
+  }
+  input {
+    background: none;
+    border: none;
+    outline: none;
+    min-height: 60px;
+    font-size: 18px;
+    font-family: 'poppinsregular';
+    color: #A098AE;
+    flex: 1;
+  }
+}
+.page-title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .page-title {
+    font-size: 36px;
+    font-family: 'poppinsbold';
+    color: #303972;
+    margin: 0px;
+  }
+}
+.dashboard-page {
+  display: flex;
+  &-left-block {
+    padding: 40px;
+    flex: 1;
+  }
+  &-right-block {
+   background-color: #fff;
+   width: 395px; 
+  }
+}
