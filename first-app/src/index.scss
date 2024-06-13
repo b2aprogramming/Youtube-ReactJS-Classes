@@ -13,6 +13,17 @@ body {
 *{
   box-sizing: border-box;
 }
+ul,figure {
+  padding: 0px;
+  margin: 0px;
+}
+strong {
+  font-weight: normal;
+  font-family: 'poppinssemibold';
+}
+ul {
+  list-style: none;
+}
 html,body,#root,main {
   height: 100%;
 }
@@ -20,10 +31,10 @@ html,body,#root,main {
   display: flex;
 }
 .app-sidebar {
-  flex: 1 0 345px;
+  flex: 1 0 250px;
   background-color: $purple;
   height: 100%;
-  padding: 40px 0 0 42px;
+  padding: 20px 0 0 20px;
   color: #fff;
 }
 .app-content {
@@ -41,7 +52,7 @@ html,body,#root,main {
     margin: 0px;
   }
   strong {
-    font-size: 36px;
+    font-size: 22px;
     margin: 0 0 0 15px;
   }
 }
@@ -56,21 +67,26 @@ html,body,#root,main {
       a {
         text-decoration: none;
         color: #C1BBEB;
-        font-size: 18px;
+        font-size: 14px;
         font-family: 'poppinsmedium';
         display: flex;
         align-items: center;
-        min-height: 64px;
-        gap: 30px;
+        gap: 12px;
+        padding: 10px 0 10px 26px;
         border-radius: 40px 0 0 40px;
-        padding-left: 26px;
         &.active {
           background-color: #fff;
           color: $purple
         }
+        span {
+          &:last-child {
+            padding-top: 8px;
+          }
+          
+        }
       }
       .menu-icon {
-        font-size: 40px;
+        font-size: 26px;
       }
     }
   }
@@ -96,13 +112,12 @@ html,body,#root,main {
 
 .search-box {
   background-color: #fff;
-  min-height: 60px;
   display: flex;
   align-items: center;
   border-radius: 50px;
-  padding: 0 30px;
+  padding: 0 15px;
   .search-box-icon {
-    font-size: 32px;
+    font-size: 20px;
     color: #4D44B5;
     margin-right: 10px;
   }
@@ -110,11 +125,11 @@ html,body,#root,main {
     background: none;
     border: none;
     outline: none;
-    min-height: 60px;
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'poppinsregular';
     color: #A098AE;
     flex: 1;
+    padding: 15px 10px;
   }
 }
 .page-title-block {
@@ -122,20 +137,77 @@ html,body,#root,main {
   justify-content: space-between;
   align-items: center;
   .page-title {
-    font-size: 36px;
+    font-size: $page-title-font-size;
     font-family: 'poppinsbold';
-    color: #303972;
+    color: $page-title-color;
     margin: 0px;
   }
 }
 .dashboard-page {
   display: flex;
   &-left-block {
-    padding: 40px;
+    padding: 15px;
     flex: 1;
   }
   &-right-block {
-   background-color: #fff;
-   width: 395px; 
+   background-color: #FDFAFC;
+   width: 300px; 
+   padding: 15px;
   }
+}
+
+
+.header-right-nav-common-css{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.header-right-nav {
+   ul {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    li {
+      span[class*="icon-"] {
+        font-size: 18px;
+        color: $header-right-navicon-color;
+      }
+    }
+   }
+   &-bell-icon,&-settings-icon{
+  
+    border: 1px solid #d0d0d1;
+    @extend .header-right-nav-common-css;
+   }
+   .user-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    figure {
+      background-color: #C1BBEB;
+      @extend .header-right-nav-common-css;
+      span {
+        color: #000 !important;
+      }
+    }
+    &-names {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      text-align: right;
+      strong {
+        color: $user-text;
+      }
+    }
+   }
+   &-icons-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+   }
 }

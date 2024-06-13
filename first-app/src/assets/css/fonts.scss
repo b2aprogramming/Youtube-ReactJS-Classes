@@ -24,7 +24,32 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+ 
+
+.icon-arrow-left:before {
+  content: "\e90a";
+}
+.icon-arrow-right:before {
+  content: "\e90b";
+}
+.icon-bell:before {
+  content: "\e90c";
+}
+.icon-email:before {
+  content: "\e90d";
+}
+.icon-plus:before {
+  content: "\e90e";
+}
+.icon-print:before {
+  content: "\e90f";
+}
+.icon-settings:before {
+  content: "\e910";
+}
+.icon-three-dot:before {
+  content: "\e911";
+}
 .icon-search:before {
   content: "\e909";
 }

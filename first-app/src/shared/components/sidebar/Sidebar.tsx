@@ -20,7 +20,7 @@ function Sidebar(){
             <div className="logo-block">
                 <a>
                     <span>
-                        <img src={logo}/>
+                        <img src={logo} width={40}/>
                     </span>
                     <strong>Akademi</strong>
                 </a>
