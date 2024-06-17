@@ -13,6 +13,11 @@ body {
 *{
   box-sizing: border-box;
 }
+h1,h2,h3,h4,h5 {
+  font-family: 'poppinsbold';
+  font-weight: normal;
+  margin: 0px;
+}
 ul,figure {
   padding: 0px;
   margin: 0px;
@@ -24,16 +29,21 @@ strong {
 ul {
   list-style: none;
 }
-html,body,#root,main {
+html,body,#root,.main {
   height: 100%;
+}
+#root {
+  display: flex;
+  flex-direction: column;
 }
 .main {
   display: flex;
+  // flex: 2;
 }
 .app-sidebar {
   flex: 1 0 250px;
   background-color: $purple;
-  height: 100%;
+  min-height: 100%;
   padding: 20px 0 0 20px;
   color: #fff;
 }
@@ -211,3 +221,134 @@ html,body,#root,main {
     gap: 12px;
    }
 }
+.section-title-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .card-title {
+    color: $card-title-color;
+    font-size: 18px;
+  }
+  .add-students-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    background-color: $card-icon-color;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    span {
+      font-size: inherit;
+      color: #fff;
+    }
+  }
+}
+
+.section-list-totle {
+  padding: 5px 0;
+  color: $card-lable-color;
+  font-size: 12px;
+}
+.students-block {
+  padding-top: 30px;
+  .email-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $card-item-icon-border-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $card-item-icon-color;
+  }
+  .card-list-wrapper {
+    padding-top: 20px;
+  }
+}
+
+
+.card-list {
+  &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      &-foods{
+        margin-bottom: 30px;
+      }
+      &-foods-thumbnail{
+        width: 100%;
+        border-radius: 10px;
+        min-height: 130px;
+        background-color: $card-item-bg-color;
+      }
+      &-foods-content{
+        padding-top: 15px;
+        strong {
+          font-size: 13px;
+          color: $foods-card-item-label-color;
+        }
+        div {
+          font-size: 12px;
+          color: $foods-card-item-sub-title-color;
+        }
+      }
+  }
+  &-content-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    figure {
+      width: 30px;
+      height: 30px;
+      background-color: $card-item-icon-color;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    section {
+      strong {
+        font-size: 13px;
+        color: $card-item-label-color;
+      }
+      div {
+        font-size: 11px;
+        color: $card-item-sub-title-color;
+        padding-top: 5px;
+      }
+    }
+  }
+}
+.message-block {
+  .time-block {
+    font-size: 12px;
+    color: $card-item-label-color;
+  }
+  .section-title-block {
+   padding: 20px 0;
+  }
+}
+
+.btn {
+ padding: 10px 15px;
+ border-radius: 30px;
+ border: none;
+ outline: none;
+ background-color:rgba(77, 68, 181, 10%);
+ color: $purple;
+ font-family: 'poppinssemibold';
+ font-size: 12px;
+ cursor: pointer;
+ &.full {
+  width: 100%;
+ }
+}
+.current-foods-block {
+  padding-top: 30px;
+  .section-title-block {
+    padding-bottom: 15px;
+  }
+}
+
