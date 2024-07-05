@@ -424,3 +424,16 @@ html,body,#root {
   border-radius: 20px;
   background-color: #fff;
 }
+
+.form-block {
+  padding: 15px 0;
+  .form-field-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    .form-group {
+        flex: 1;
+    }
+  }
+  
+}

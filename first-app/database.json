@@ -1,0 +1,13 @@
+{
+    "users": [
+        { "id": "1", "fullName": "a title", "fristName": "Fir stbanme", "lastName": "Lname here" },
+        { "id": "2", "fullName": "a title", "fristName": "Fir stbanme", "lastName": "Lname here" }
+    ],
+    "students": [
+        {"id": 100, "name": "Ram", "email": "ram@gmail.com", "avatar": "", "className": "VI", "classSection": "A"},
+        {"id": 101, "name": "Raju", "email": "raju@gmail.com", "avatar": "", "className": "VI", "classSection": "B"},
+        {"id": 102, "name": "John", "email": "john@gmail.com", "avatar": "", "className": "VII", "classSection": "A"},
+        {"id": 103, "name": "Ramesh", "email": "ramesh@gmail.com", "avatar": "", "className": "VII", "classSection": "B"},
+        {"id": 104, "name": "Giri", "email": "griri@gmail.com", "avatar": "", "className": "VI", "classSection": "A"}
+    ]
+}

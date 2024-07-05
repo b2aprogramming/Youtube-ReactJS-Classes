@@ -27,7 +27,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
-    width: 160,
+    width: 200,
     valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
   },
 ];
@@ -41,7 +41,7 @@ const rows = [
   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
   { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65},
 ];
 
 
@@ -50,6 +50,7 @@ function StudentsTable() {
         <div className='student-table-block'>
             <Box sx={{ height: 400, width: '100%' }}>
                 <DataGrid
+
                     rows={rows}
                     columns={columns}
                     initialState={{
