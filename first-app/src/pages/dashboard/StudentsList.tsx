@@ -19,6 +19,7 @@ import Icon from "../../shared/components/icon/Icon";
 import CardList from "./CardList";
 import CardListItem from "./CardListItem";
 import { TextField } from "@mui/material";
+import useApi from "../../shared/learning/hooks/useApi";
 
 
 const Transition = React.forwardRef((
@@ -43,21 +44,23 @@ const formFields = {
 };
 
 function Studentslist() {
+    const [getAllStudetns, {data, isLoading}] = useApi({url: '/students'});
+    const [saveStudent, {isLoading: loadingForSave}] = useApi({url: '/students'});
     const [openModal, setOpenModal] = React.useState(false);
     const [students, setStudetns] = useState<any>([]);
     const [stuendtForm, setStudentForm] = useState(formFields);
 
-    const getStudetns = () => {
-        fetch('http://localhost:3000/students').then((res) => {
-            res.json().then((data) => {
-                console.log('@@@ students', data);
-                setStudetns(data)
-            })
+    // const getStudetns = () => {
+    //     fetch('http://localhost:3000/students').then((res) => {
+    //         res.json().then((data) => {
+    //             console.log('@@@ students', data);
+    //             setStudetns(data)
+    //         })
             
-        }).catch((err) => {
-            console.log('@@@ ERR', err);
-        })
-    };
+    //     }).catch((err) => {
+    //         console.log('@@@ ERR', err);
+    //     })
+    // };
 
     
     const handleClickOpen = () => {
@@ -71,26 +74,31 @@ function Studentslist() {
     const submitForm = () => {
        // setOpenModal(false);
        console.log('@@@ FORM', stuendtForm)
-       let id = (+students[students.length-1].id) + 1;
+       let id = (+data[data.length-1].id) + 1;
        const payload = {
         ...stuendtForm,
         joiningDate: stuendtForm.joiningDate.format('DD/MM/YYYY'),
         id: id
        };
 
-       fetch('http://localhost:3000/students', {
-        method: 'POST',
-        body: JSON.stringify(payload)
-       }).then((res) => {
-        res.json().then((data) => {
-            console.log('@@@ save students', data);
-            setOpenModal(false);
-            setStudentForm(formFields);
-        })
+       saveStudent({
+        body: JSON.stringify(payload),
+        method: 'POST'
+       });
+
+    //    fetch('http://localhost:3000/students', {
+    //     method: 'POST',
+    //     body: JSON.stringify(payload)
+    //    }).then((res) => {
+    //     res.json().then((data) => {
+    //         console.log('@@@ save students', data);
+    //         setOpenModal(false);
+    //         setStudentForm(formFields);
+    //     })
         
-    }).catch((err) => {
-        console.log('@@@ ERR', err);
-    })
+    // }).catch((err) => {
+    //     console.log('@@@ ERR', err);
+    // })
     };
 
     const changeInput = (evt: React.ChangeEvent<HTMLInputElement>, formField: string) => {
@@ -98,14 +106,25 @@ function Studentslist() {
             const fields = {
                 ...prev
             };
-            fields[formField] = evt.target.value;
+            fields[formField] = formField !== 'joiningDate' ? evt.target.value: evt;
             return fields;
         })
     };
 
     useEffect(() => {
-        getStudetns();
+      //  getStudetns();
+       getAllStudetns();
     }, []);
+
+    useEffect(() => {
+      //  getStudetns();
+      if(!loadingForSave){
+        setOpenModal(false);
+        setStudentForm(formFields);
+      }
+    }, [loadingForSave]);
+
+
 
 
     return (
@@ -122,7 +141,7 @@ function Studentslist() {
             
             <div className="card-list-wrapper">
                 <CardList>
-                    {students.map((ele: any) => {
+                    {data?.map((ele: any) => {
                         return (
                             <CardListItem title={ele.name} subTitle={`Class ${ele.className} ${ele.classSection}`} key={ele.id} renderRihtSide={() => {
                                 return (
