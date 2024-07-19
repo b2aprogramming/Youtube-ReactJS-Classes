@@ -437,3 +437,28 @@ html,body,#root {
   }
   
 }
+.form-block {
+  .form-field {
+    margin-bottom: 15px;
+    label {
+      font-size: 14px;
+    }
+    input {
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      outline: none;
+      border-radius: 4px;
+      background-color: #fff;
+      &:focus{
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      }
+    }
+  }
+}
+.content {
+  padding: 15px;
+}
+.error-field {
+  color: red;
+  font-size: 14px;
+}

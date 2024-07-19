@@ -1,4 +1,5 @@
 import useCounter from "../../shared/learning/hooks/useCounter";
+import FormValidation from "./FormValidation";
 
 function LearningPage() {
     const { counter, increement, decreement } = useCounter({
@@ -7,11 +8,15 @@ function LearningPage() {
         decreementSize: 10
     });
     return (
-        <div>
+        <div className="content">
             <h1>Learning page</h1>
             <div>Coutner: {counter}</div>
             <button onClick={increement}>Counter </button>
             <button onClick={decreement}>De Counter</button>
+
+            <div>
+                <FormValidation/>
+            </div>
         </div>
     );
 }
