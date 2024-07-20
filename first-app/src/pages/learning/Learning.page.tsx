@@ -1,5 +1,6 @@
 import useCounter from "../../shared/learning/hooks/useCounter";
 import FormValidation from "./FormValidation";
+import FormValidationReusable from "./FormValidationReusable";
 
 function LearningPage() {
     const { counter, increement, decreement } = useCounter({
@@ -15,7 +16,8 @@ function LearningPage() {
             <button onClick={decreement}>De Counter</button>
 
             <div>
-                <FormValidation/>
+                {/* <FormValidation/> */}
+                <FormValidationReusable/>
             </div>
         </div>
     );

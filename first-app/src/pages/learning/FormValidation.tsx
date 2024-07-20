@@ -13,6 +13,10 @@ function FormValidation() {
         email: false,
         phone: false
     });
+    const [erros2, setErros2] = useState({
+        email: false,
+        phone: false
+    });
 
     // const validateFiels = {
     //     fName: '',
@@ -52,11 +56,19 @@ function FormValidation() {
             const errorObj: any = {...prev};
             if(formField) {
                 errorObj[formField] = !fields[formField] ? true : false;
+                if(formField === 'email') {
+                    emailValiation(fields[formField])
+                }
+                if(formField === 'phone') {
+                    phoneValiation(fields[formField])
+                }
             }else{
                 errorObj.fName = !fields.fName ? true : false;
                 errorObj.lName = !fields.lName ? true : false;
                 errorObj.email = !fields.email ? true : false;
                 errorObj.phone = !fields.phone ? true : false;
+                emailValiation(fields.email);
+                phoneValiation(fields.phone);
             }
            
             if(callBack) {
@@ -66,6 +78,29 @@ function FormValidation() {
         })
        
     }
+
+    const emailValiation = (fieldName: string) =>{
+        // bahgath@gmail.com
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        setErros2((prev) =>{
+            const obj = {...prev};
+            obj.email = fieldName && !fieldName.match(emailPattern) ? true : false;
+            return obj;
+        });
+        
+    };
+
+    const phoneValiation = (fieldName: string) =>{
+        // XXX-XXX-XXXX
+        // XXX.XXX.XXXX
+        // XXX XXX XXXX
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        setErros2((prev) =>{
+            const obj = {...prev};
+            obj.phone = fieldName && !fieldName.match(phoneno) ? true : false;
+            return obj;
+        });
+    };
     
 
     const renderError = (message: string) => {
@@ -87,6 +122,7 @@ function FormValidation() {
                         value={formFields.fName} 
                         onChange={(evt:  React.ChangeEvent<HTMLInputElement>) => updateFormField(evt, 'fName')} />
                         {erros.fName && renderError('First Name is Required')}
+                        
                     </div>
                 </div>
                 <div className="form-field">
@@ -101,6 +137,7 @@ function FormValidation() {
                     <div>
                         <input type="text" value={formFields.email} onChange={(evt:  React.ChangeEvent<HTMLInputElement>) => updateFormField(evt, 'email')} />
                         {erros.email && renderError('Email is Required')}
+                        {erros2.email && renderError('Email is not valid')}
                     </div>
                 </div>
                 <div className="form-field">
@@ -108,6 +145,7 @@ function FormValidation() {
                     <div>
                         <input type="text" value={formFields.phone} onChange={(evt:  React.ChangeEvent<HTMLInputElement>) => updateFormField(evt, 'phone')} />
                         {erros.phone && renderError('Phone is Required')}
+                        {erros2.phone && renderError('Phone is not valid')}
                     </div>
                 </div>
 
