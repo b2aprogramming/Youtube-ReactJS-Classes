@@ -462,3 +462,34 @@ html,body,#root {
   color: red;
   font-size: 14px;
 }
+.table-grid {
+  border-collapse: collapse;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  tr{
+    td,th {
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+  }
+}
+.table-grid-container {
+  background-color: #fff;
+}
+.contact-icons {
+  display: flex;
+  gap: 5px;
+  span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(77,68,181, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $table-grid-icon-color;
+  }
+}

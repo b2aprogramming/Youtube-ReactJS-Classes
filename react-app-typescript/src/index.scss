@@ -16,4 +16,16 @@ code {
 .invalid-feedback {
   display: block;
 }
-
+.t-table {
+  border-collapse: collapse;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  width: 100%;
+  tr{
+    td,th {
+      border-left: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 6px 10px;
+    }
+  }
+}

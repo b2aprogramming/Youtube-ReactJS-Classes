@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from "react-router-dom";
 import './App.css';
 import { MyFun } from './TestTs';
 // import { ReactComponent as Logo } from './images/svg/home.svg';
-import Logo from './images/svg/home.svg';
-import TestForm from './shared/components/testForm';
+
+import HomePage from './pages/home/Home.page';
+import TablePage from './pages/table/Table.page';
 
 function App() {
   useEffect(() => {
@@ -11,14 +13,10 @@ function App() {
   }, []);
   return (
     <div className="container">
-        <h1>My TS App</h1>
-        <div>
-         {/* <img src="./assets/images/users.png" alt="Home Icon" /> */}
-         {/* <img src={Logo} alt="Home Icon" /> */}
-         {/* <Logo /> */}
-
-         <TestForm/>
-        </div>
+      <Routes>
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/table" element={<TablePage/>} />
+       </Routes>
     </div>
   );
 }

@@ -25,7 +25,9 @@
     -moz-osx-font-smoothing: grayscale;
   }
  
-
+.icon-call:before {
+  content: "\e912";
+}
 .icon-arrow-left:before {
   content: "\e90a";
 }
